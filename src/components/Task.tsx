@@ -1,13 +1,18 @@
 import React from 'react'
 import { AiFillDelete } from 'react-icons/ai'
+import { TaskType } from '../model'
 
-const Task = () => {
+interface Props{
+    task: TaskType
+}
+
+const Task : React.FC<Props> = ({task}: Props) => {
   return (
     <div>
-        <div className='task bg-[#031A56] flex items-center justify-between px-[15px] py-[7px] rounded-2xl'>
+        <div className='task bg-[#031A56] flex items-center justify-between px-[15px] py-[7px] rounded-2xl text-white mt-[20px]'>
             <div>
-                <p>Task</p>
-                <p>Day & Date</p>
+                <p>{task.text}</p>
+                <p>{task.day}</p>
             </div>
 
             <div>

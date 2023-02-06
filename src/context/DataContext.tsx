@@ -3,12 +3,16 @@ import { useState, useEffect } from "react";
 
 interface Props {
   children: React.ReactNode;
+//   showAddTask: boolean,
+//   setShowAddTask: React.Dispatch<React.SetStateAction<boolean>>
+
 }
 
-const DataContext = createContext({});
+
+const DataContext = createContext({showAddTask: false, setShowAddTask: (showAddTask : boolean) => {}});
 
 const DataProvider: React.FC<Props> = ({ children }: Props) => {
-  const [showAddTask, setShowAddTask] = useState<boolean>(false);
+  const [showAddTask, setShowAddTask] = useState(false);
 
   return (
     <DataContext.Provider

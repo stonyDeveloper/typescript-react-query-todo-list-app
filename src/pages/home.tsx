@@ -6,15 +6,17 @@ import Tasks from "../components/Tasks";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 
+
+
 const Home: React.FC = () => {
-  const {showAddTask} = useContext(DataContext);
-  console.log(showAddTask);
+  const {showAddTask}  = useContext(DataContext);
+  console.log(showAddTask, "ShowAddTask");
   return (
     <>
       <AppShell
         children={
           <>
-            <AddTask />
+          {showAddTask && <AddTask />}
             <Tasks />
           </>
         }

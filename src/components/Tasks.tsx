@@ -1,10 +1,20 @@
 import React from 'react'
 import Task from './Task'
+import { useQuery } from '@tanstack/react-query'
+import useFetchAllTasks from '../hooks/useFetchAllTasks'
+import { TaskType } from '../model'
 
-const Tasks = () => {
+const Tasks : React.FC = () => {
+    const { fetchTasks }  = useFetchAllTasks()
+  const {error, data, isFetching, status} = useQuery({
+    queryKey: ['allTasks'],
+    queryFn: fetchTasks
+  })
+
+  console.log(data, "Data")
   return (
     <div className='mt-[20px]'>
-        <Task />
+        {data && data.map((task: TaskType) => (<Task key={task.id} task={task}/>))}
     </div>
   )
 }
