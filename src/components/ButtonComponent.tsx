@@ -10,7 +10,7 @@ interface Props{
 const ButtonComponent: React.FC<Props> = ({btnText, width, height, bgColor} : Props) => {
   return (
     <div>
-        <button className={`${width} ${height} ${bgColor} rounded-md`}>{btnText}</button>
+        <button className={`${width} ${height} ${bgColor} rounded-md`} type='submit'>{btnText}</button>
     </div>
   )
 }

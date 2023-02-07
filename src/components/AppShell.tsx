@@ -35,7 +35,7 @@ const AppShell: React.FC<Props> = ({ children }: Props) => {
           bg={"rgb(52,79,161)"}
           padding={"10px"}
           textColor={"white"}
-          minW={"400px"}
+          minW={"500px"}
           shadow={"lg"}
         >
           <CardHeader
