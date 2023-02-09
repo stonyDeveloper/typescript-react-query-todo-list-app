@@ -6,12 +6,11 @@ import { DataContext } from "../context/DataContext";
 import { Formik } from "formik";
 import { taskSchema } from "../taskSchema";
 import useAddTask from "../hooks/useAddTask";
-import { QueryClient, useMutation } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 const AddTask = () => {
   const { addTask } = useAddTask();
+  const queryClient = useQueryClient();
 
   const addNewTask = useMutation({
     mutationFn: addTask,
@@ -20,9 +19,13 @@ const AddTask = () => {
     },
   });
 
+  if( addNewTask.isLoading ){
+    return <span>Loading....</span>
+  }
+
   return (
     <Formik
-      initialValues={{ text: "", day: "", reminder: false }}
+      initialValues={{ text: "", day: "", reminder: false, id: 0 }}
       validationSchema={taskSchema}
       onSubmit={(values, { resetForm }) => {
         console.log(values, "Values");

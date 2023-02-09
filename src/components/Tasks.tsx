@@ -6,12 +6,24 @@ import { TaskType } from "../model";
 
 const Tasks: React.FC = () => {
   const { fetchTasks } = useFetchAllTasks();
-  const { error, data, isFetching, status } = useQuery({
+  const {
+    error,
+    data,
+    isFetching,
+    status,
+  } = useQuery({
     queryKey: ["allTasks"],
     queryFn: fetchTasks,
   });
 
-  console.log(data, "Data");
+  if (status === "loading") {
+    return <span>Loading....</span>;
+  }
+
+  if (status === "error") {
+    return <span>Error</span>;
+  }
+
   return (
     <div className="mt-[20px]">
       {data &&

@@ -12,21 +12,13 @@ import { AddIcon, CloseIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 
-interface Props {
+type Props = {
   children: JSX.Element;
 }
 
 const AppShell: React.FC<Props> = ({ children }: Props) => {
-  const { setShowAddTask, showAddTask } = useContext(DataContext);
-  const toggleDropdown = () => {
-    // if (showAddTask === true) {
-    //   setShowAddTask(false);
-    // } else if (showAddTask === false) {
-    //   setShowAddTask(true)
-    // }
-    // console.log(!showAddTask);
-    setShowAddTask(!showAddTask)
-  };
+  const { setShowAddTask, showAddTask, toggleDropdown } = useContext(DataContext);
+  
   return (
     <div className="bg-[#98B5FF] min-h-screen">
       <Flex justify={"center"} paddingTop={"80px"}>
@@ -55,7 +47,7 @@ const AppShell: React.FC<Props> = ({ children }: Props) => {
           <CardBody>{children}</CardBody>
           <CardFooter>
             <Text marginRight={"7px"}>Copyright @2023</Text>
-            <Text>About</Text>
+            <Text></Text>
           </CardFooter>
         </Card>
       </Flex>
